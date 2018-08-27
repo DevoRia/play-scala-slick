@@ -1,0 +1,79 @@
+@(userForm: Form[models.StudentFormData],users : Seq[models.Student])(implicit request: RequestHeader)
+@main() {
+   @* <form id="user-data-form" role="form" action='@routes.HomeController.addUser()' method="post"
+    class="form-horizontal" align="center" autocomplete="off">
+
+        <fieldset class="user-fieldset">
+            <div class="col-xs-4">
+                <div class="user-form">
+                    <label class="form-title"
+                    style="color: #F8741B; font-size: 22px;font-weight: bold; text-decoration:none">title</label>
+                </div>
+                <br/>
+
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon2"><b>Firstname</b></span>
+                    <input type="text" class="form-control" id="firstName" name="firstName" value=""
+                    placeholder="First Name" aria-describedby="sizing-addon1" required>
+                    <br>
+                </div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon2"><b>Lastname</b></span>
+                    <input type="text" class="form-control" id="lastName" name="lastName" value="" placeholder="Last Name"
+                    aria-describedby="sizing-addon1" required>
+                    <br>
+                </div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon2"><b>Mobile</b></span>
+                    <input type="text" class="form-control" id="mobile" name="mobile" value="" placeholder="Mobile"
+                    aria-describedby="sizing-addon1" required>
+                    <br>
+                </div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon2"><b>Email</b></span>
+                    <input type="text" class="form-control" id="email" name="email" value="" placeholder="Email"
+                    aria-describedby="sizing-addon1" required>
+
+                </div>
+
+                <br/>
+                <div class="form-actions controls ynt-btn-xlarge">
+                    <button type="submit" class="btn btn-primary ynt-btn-orange">Add</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>*@
+    <br>
+    <div class="col-xs-4">
+        <div class="user-display">
+
+            <fieldset>
+                <legend align="center" id="registeredUser"><h3>Registered Users</h3></legend>
+
+                <table class="table">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>#</th>
+                            <th>name</th>
+                            <th>group</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @for(user <- users){
+                        <tr>
+                            <td>@user.id</td>
+                            <td>@user.name</td>
+                            <td>@user.group</td>
+                            @*<td><a href="@routes.ApplicationController.deleteUser(user.id)#end">delete</a></td>*@
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+
+            </fieldset>
+
+            <a class="btn btn-default page-scroll" id ="end" href="#intro" style="align:left">Click Me to Scroll to About</a>
+        </div>
+    </div>
+
+}
